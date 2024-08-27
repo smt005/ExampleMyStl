@@ -2,7 +2,7 @@
 #include "HeadersExample.h"
 #include "../../mystl/vector.h"
 
-template <typename VecT, int count = 5>
+template <typename VecT, int count = 6>
 void FunForEmplaceBack()
 {
 	std::cout << "FunForEmplaceBack(" << typeid(VecT).name() << ", " << count << ")" << std::endl;
@@ -11,6 +11,7 @@ void FunForEmplaceBack()
 
 	for (size_t i = 0; i < count; ++i) {
 		v.emplace_back(i);
+		std::cout << std::endl << std::endl;
 	}
 	std::cout << "size: " << v.size() << std::endl;
 
@@ -19,17 +20,32 @@ void FunForEmplaceBack()
 	}
 }
 
+void Fun01()
+{
+	//std::cout << "\n\nSTD" << std::endl;
+	//FunForEmplaceBack<std::vector<int>>();
+
+	//std::cout << "\n\nMY STD" << std::endl;
+	//FunForEmplaceBack<mystd::vector<int>>();
+
+	try {
+		std::cout << "\n\nSTD" << std::endl;
+		FunForEmplaceBack<std::vector<TestClass>>();
+	}
+	catch (...) {
+		std::cout << "\n\naccept" << std::endl;
+	}
+
+	try {
+		std::cout << "\n\nMY STD" << std::endl;
+		FunForEmplaceBack<mystd::vector<TestClass>>();
+	}
+	catch (...) {
+		std::cout << "\n\naccept" << std::endl;
+	}
+}
+
 void VectorExample()
 {
-	std::cout << "\n\nSTD" << std::endl;
-	FunForEmplaceBack<std::vector<int>>();
-
-	std::cout << "\n\nMY STD" << std::endl;
-	FunForEmplaceBack<mystd::vector<int>>();
-
-	std::cout << "\n\nSTD" << std::endl;
-	FunForEmplaceBack<std::vector<TestClass>>();
-
-	std::cout << "\n\nMY STD" << std::endl;
-	FunForEmplaceBack<mystd::vector<TestClass>>();
+	Fun01();
 }
