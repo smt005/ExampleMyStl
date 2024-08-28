@@ -2,12 +2,13 @@
 #include "HeadersExample.h"
 #include "../../mystl/vector.h"
 
-template <typename VecT, int count = 6>
+template <typename VecT, int count = 5>
 void FunForEmplaceBack()
 {
 	std::cout << "FunForEmplaceBack(" << typeid(VecT).name() << ", " << count << ")" << std::endl;
 
 	VecT v;
+	std::cout << "sizeof(" << typeid(VecT).name() << ") == " << sizeof(v) << " (" << (sizeof(v) / 8) << ")" << std::endl;
 
 	for (size_t i = 0; i < count; ++i) {
 		v.emplace_back(i);

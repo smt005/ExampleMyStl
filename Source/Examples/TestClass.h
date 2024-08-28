@@ -34,11 +34,11 @@ public:
 		}
 	}
 
-	/*TestClass(TestClass&& obj) // noexcept
+	TestClass(TestClass&& obj) noexcept
 		: _value(obj._value)
 	{
 		std::cout << "[" << this << "] TestClass( && " << std::to_string(_value) << " [" << &obj << "])" << std::endl;
-	}*/
+	}
 
 	TestClass operator = (const TestClass& obj)
 	{
